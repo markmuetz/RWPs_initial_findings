@@ -142,6 +142,13 @@ The K-means clustering algorithm (KMA) splits a number of samples \todo{haven't 
 
 The number of clusters to use is not \textit{a priori} obvious. We have the competing requirements that we want few enough RWPs that we can analyse where each one comes from without being overloaded with data, and we want each RWP to be as representative as possible of its cluster of profiles. One method for working out a suitable number of clusters is known as the elbow method. This involves plotting the sum of the variances of each cluster, the score, against the number of clusters used. This will necessarily decrease in magnitude as the number of clusters increases, however, if there is a change in the rate of change in the gradient (a so-called `elbow'), then this indicates that using more clusters is reducing the score by a lower amount, and thus indicates a suitable number of clusters. Figure \ref{fig:kmeans_scores} shows the scores for 5-20 clusters. Although there is not a large elbow in this figure, there is a recognizable kink at 8 clusters and 11 clusters. We pick 11 clusters as a pragmatic number of clusters to use, being large enough to span the wind profile space, and small enough that sensible analysis of each cluster is possible.
 
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=400px]{figs/KMEANS_SCORES_True_cape-shear_magrot.png}
+    \caption{}
+    \label{fig:kmeans_scores}
+\end{figure}
+
 \section{Results}
 
 \subsection{Representative Wind Profiles}

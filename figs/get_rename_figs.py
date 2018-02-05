@@ -1,3 +1,4 @@
+"""Download and rename all files."""
 import os
 import re
 import subprocess as sp

@@ -8,19 +8,19 @@ SERVER = 'mmuetz@login.archer.ac.uk'
 LOC = '/nerc/n02/n02/mmuetz/um10.9_runs/archive/u-au197/share/data/history/P1M/figs/./'
 
 FILENAMES = [
-    'atmos.None.shear_profile_classification_analysis.PCA_PROFILE_True_cape-shear_magrot_pi-0_evr-0.5278288722038269.png', 
-    'atmos.None.shear_profile_classification_analysis.PCA_PROFILE_True_cape-shear_magrot_pi-1_evr-0.1835406869649887.png', 
-    'atmos.None.shear_profile_classification_analysis.PCA_PROFILE_True_cape-shear_magrot_pi-2_evr-0.1671045869588852.png', 
-    'atmos.None.shear_profile_classification_analysis.PCA_PROFILE_True_cape-shear_magrot_pi-3_evr-0.04120809957385063.png', 
-    'atmos.None.shear_profile_classification_analysis.PCA_RED_True_cape-shear_magrot_725164_-4_nclust-11_prof-3452.png', 
-    'atmos.None.shear_profile_classification_analysis.PCA_RED_True_cape-shear_magrot_725164_-4_nclust-11_prof-7767.png', 
-    'atmos.None.shear_profile_classification_analysis.PCA_RED_True_cape-shear_magrot_725164_-4_nclust-11_prof-5178.png', 
-    'atmos.None.shear_profile_classification_analysis.PCA_RED_True_cape-shear_magrot_725164_-4_nclust-11_prof-12082.png', 
+    ('atmos.None.shear_profile_classification_analysis.PCA_PROFILE_True_cape-shear_magrot_pi-0_evr-0.5278288722038269.png', [(r'_evr.*(?:\.png)', r'')]),
+    ('atmos.None.shear_profile_classification_analysis.PCA_PROFILE_True_cape-shear_magrot_pi-1_evr-0.1835406869649887.png', [(r'_evr.*(?:\.png)', r'')]),
+    ('atmos.None.shear_profile_classification_analysis.PCA_PROFILE_True_cape-shear_magrot_pi-2_evr-0.1671045869588852.png', [(r'_evr.*(?:\.png)', r'')]),
+    ('atmos.None.shear_profile_classification_analysis.PCA_PROFILE_True_cape-shear_magrot_pi-3_evr-0.04120809957385063.png',[(r'_evr.*(?:\.png)', r'')]),
+    ('atmos.None.shear_profile_classification_analysis.PCA_RED_True_cape-shear_magrot_725164_-4_nclust-11_prof-3452.png', None), 
+    ('atmos.None.shear_profile_classification_analysis.PCA_RED_True_cape-shear_magrot_725164_-4_nclust-11_prof-7767.png', None), 
+    ('atmos.None.shear_profile_classification_analysis.PCA_RED_True_cape-shear_magrot_725164_-4_nclust-11_prof-5178.png', None), 
+    ('atmos.None.shear_profile_classification_analysis.PCA_RED_True_cape-shear_magrot_725164_-4_nclust-11_prof-12082.png', None)
 ]
 
 
 def get_all():
-    filenames = [os.path.join(LOC, fn) for fn in FILENAMES]
+    filenames = [os.path.join(LOC, fn[0]) for fn in FILENAMES]
 
     cmd_filenames = ' :'.join(filenames)
     cmd = f'rsync -Rza {SERVER}:{cmd_filenames} raw/'
@@ -28,9 +28,12 @@ def get_all():
 
 
 def rename_all():
-    for fn in FILENAMES:
+    for (fn, sub_repl) in FILENAMES:
         new_fn = re.sub('atmos.None.shear_profile_classification_analysis.', '', fn)
-        new_fn = re.sub('_evr.*\.png', '', new_fn) + '.png'
+        if sub_repl:
+            for sub, repl in sub_repl:
+                new_fn = re.sub(sub, repl, new_fn) + '.png'
+        print(f'{fn} -> {new_fn}')
         shutil.copyfile(os.path.join('raw', fn), new_fn)
 
 

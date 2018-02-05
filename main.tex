@@ -122,6 +122,20 @@ The number of dimensions of the original dataset is 14 (7 pressure levels for $u
 
 It is also insightful to look at the profiles that are produced by reprojecting the original profile along only these first 4 principal components. Some examples showing high and low fidelity to the original profiles are shown in Fig. \ref{fig:pca_reprojections}. \todo{some basic stats of how good keeping the first 4 components is? Or is this implicit in the fact that I have chosen to keep 90\% of the variance.}
 
+\begin{figure}[htp!]%
+    \centering
+    \subfloat[PC 1]{{\includegraphics[width=7cm]{figs/PCA_} }}%
+    \qquad
+    \subfloat[PC 2]{{\includegraphics[width=7cm]{figs/PCA_PROFILE_True_cape-shear_magrot_pi-1} }}%
+    \qquad
+    \subfloat[PC 3]{{\includegraphics[width=7cm]{figs/PCA_PROFILE_True_cape-shear_magrot_pi-2} }}%
+    \qquad
+    \subfloat[PC 4]{{\includegraphics[width=7cm]{figs/PCA_PROFILE_True_cape-shear_magrot_pi-3} }}%
+    \qquad
+    \caption{The first 4 principal components.}%
+    \label{fig:pca_components}%
+\end{figure}
+
 \subsubsection{K-means clustering}
 
 The K-means clustering algorithm (KMA) splits a number of samples \todo{haven't defined} into clusters based on how similar the samples are to other samples. It does this in a way which minimizes the within cluster variance. The algorithm used here is LLoyd's algorithm, which is computationally efficient but not guaranteed to find a global minimum for the within cluster variance. It starts by randomly assigning samples to clusters. Then it calculates the mean of each cluster, and then it re-assigns samples to new clusters based in which of the cluster means each sample is nearest to \todo{define distance metric somewhere}. This last step is repeated until there is very little movement (less than some predefined threshold) in the cluster means, when the algorithm terminates.

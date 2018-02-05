@@ -12,6 +12,10 @@ FILENAMES = [
     'atmos.None.shear_profile_classification_analysis.PCA_PROFILE_True_cape-shear_magrot_pi-1_evr-0.1835406869649887.png', 
     'atmos.None.shear_profile_classification_analysis.PCA_PROFILE_True_cape-shear_magrot_pi-2_evr-0.1671045869588852.png', 
     'atmos.None.shear_profile_classification_analysis.PCA_PROFILE_True_cape-shear_magrot_pi-3_evr-0.04120809957385063.png', 
+    'atmos.None.shear_profile_classification_analysis.PCA_RED_True_cape-shear_magrot_725164_-4_nclust-11_prof-3452.png', 
+    'atmos.None.shear_profile_classification_analysis.PCA_RED_True_cape-shear_magrot_725164_-4_nclust-11_prof-7767.png', 
+    'atmos.None.shear_profile_classification_analysis.PCA_RED_True_cape-shear_magrot_725164_-4_nclust-11_prof-5178.png', 
+    'atmos.None.shear_profile_classification_analysis.PCA_RED_True_cape-shear_magrot_725164_-4_nclust-11_prof-12082.png', 
 ]
 
 

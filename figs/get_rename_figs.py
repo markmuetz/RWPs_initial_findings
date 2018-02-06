@@ -18,6 +18,7 @@ FILENAMES = [
     ('atmos.None.shear_profile_classification_analysis.PCA_RED_True_cape-shear_magrot_725164_-4_nclust-11_prof-5178.png', None), 
     ('atmos.None.shear_profile_classification_analysis.PCA_RED_True_cape-shear_magrot_725164_-4_nclust-11_prof-12082.png', None),
     ('atmos.None.shear_profile_classification_analysis.KMEANS_SCORES_True_cape-shear_magrot.png', None),
+    ('atmos.None.shear_profile_classification_analysis.PROFILES_GEOG_LOC_True_cape-shear_magrot_391137_-4_nclust-11.png', None),
 ]
 
 
